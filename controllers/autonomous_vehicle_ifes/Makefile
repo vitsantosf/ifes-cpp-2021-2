@@ -25,3 +25,5 @@ LIBRARIES = -lCppDriver -lCppCar -ldriver -lcar
 
 # Do not modify the following: this includes Webots global Makefile.include
 include $(WEBOTS_HOME_PATH)/resources/Makefile.include
+
+CXXFLAGS += "-std=c++14"

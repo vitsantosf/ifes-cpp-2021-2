@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+controllers/autonomous_vehicle_ifes/autonomous_vehicle_ifes
+controllers/autonomous_vehicle_ifes/build/release/autonomous_vehicle_ifes
+worlds/.city.wbproj
+controllers/autonomous_vehicle_ifes/.vscode/c_cpp_properties.json
+controllers/autonomous_vehicle_ifes/.vscode/configurationCache.log
+controllers/autonomous_vehicle_ifes/.vscode/dryrun.log
+controllers/autonomous_vehicle_ifes/.vscode/settings.json
+controllers/autonomous_vehicle_ifes/.vscode/targets.log
