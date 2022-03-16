@@ -14,23 +14,27 @@ public:
     // computes approximate angle of obstacle
     // or nothing if no obstacle was detected
     void process_sick_data(const float *sick_data) {
-        const int HALF_AREA = 20; // check 20 degrees wide middle area
+        const int HALF_AREA = 23; // check 20 degrees wide middle area
         int sumx = 0;
         int collision_count = 0;
         int x;
+       
         obstacle_dist = 0.0;
         for (x = sick_width / 2 - HALF_AREA; x < sick_width / 2 + HALF_AREA; x++) {
             float range = sick_data[x];
-            if (range < 20.0) {
+            if (range < 10.0) {
             sumx += x;
             collision_count++;
             obstacle_dist += range;
+            
             }
+    
         }
 
         // if no obstacle was detected...
-        if (collision_count == 0)
+        if (collision_count == 0){
             obstacle = false;
+            }
         else {
             obstacle = true;
             obstacle_dist = obstacle_dist / collision_count;

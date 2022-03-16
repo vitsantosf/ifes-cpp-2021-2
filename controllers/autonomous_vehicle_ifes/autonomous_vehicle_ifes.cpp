@@ -51,6 +51,7 @@ void check_keyboard(int key){
 }
 
 int main(int argc, char **argv) {
+  double velocidade = 0.0;
   int i (0);
   Simulador simulador;
   ContornarObstaculo contornar_obstaculo(simulador.getSickWidth(), simulador.getSickFOV());
@@ -76,8 +77,17 @@ int main(int argc, char **argv) {
 
         // avoid obstacles and follow yellow line
         if (contornar_obstaculo.obstacle_detected()) {
-
-          simulador.setBrakeIntensity(0.0);
+          velocidade = 70.0;
+          simulador.set_speed(velocidade);
+          simulador.setBrakeIntensity(0.25);
+          /*velocidade = velocidade-0.22;
+          if (velocidade < 30.0){
+            velocidade = 30.0;
+            simulador.set_speed(velocidade);
+            }
+           else{
+            simulador.set_speed(velocidade);
+           }*/
 
           double current_steering = simulador.getSteeringAngle();
 
@@ -95,11 +105,20 @@ int main(int argc, char **argv) {
           // no obstacle has been detected, simply follow the line
           simulador.setBrakeIntensity(0.0);
           simulador.set_steering_angle(seguir_faixa_amarela.followYellowLine());
-        } 
+          //simulador.set_speed(75.0);
+          velocidade=velocidade+5.0;
+          if (velocidade>60.0){
+            velocidade = velocidade+0.05-5.0;}
+            if (velocidade>80.0){
+            velocidade = 80.0;
+            simulador.set_speed(velocidade);}
+            else{
+            simulador.set_speed(velocidade);}
+        }
         else {
           // no obstacle has been detected but we lost the line => we brake and
           // hope to find the line again
-          simulador.setBrakeIntensity(0.4);
+          simulador.setBrakeIntensity(0.5);
         }
       }
 
